@@ -1,5 +1,10 @@
 provider "aws" {}
 
+provider "aws" {
+  alias  = "west"
+  region = "ca-central-1"
+}
+
 module "vpc_dev1" {
   source               = "./module"
   providers            = { aws = aws.cac1 }
