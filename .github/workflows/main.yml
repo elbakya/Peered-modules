@@ -1,6 +1,13 @@
 name: GitHub-Actions
 run-name: "Plan Process Only"
-on: [push]
+on:
+  workflow_dispatch:
+    inputs:
+      terraform_version:
+        description: "Verion of Terraform"
+        default: 1.1.7
+        required: true
+
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
@@ -18,17 +25,8 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
         with: 
-          terraform_version: 1.1.7
+          terraform_version: ${{ github.event.inputs.terraform_version }}
           cli_config_credentials_hostname: 'terraform.example.com'
-          #cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
-          #aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
-          #aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
-          #aws-region: 'eu-central-1'
-
-        #env:
-        # AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
-        # AWS_SECRET_ACCESS_ID: ${{ secrets.AWS_SECRET_KEY }} 
-        # AWS_REGION: 'eu-central-1'
 
       - name: Terraform Format
         id: fmt
@@ -40,10 +38,4 @@ jobs:
         
       - name: Terraform Plan
         id: plan
-        run: terraform plan | tee log
-        #env:
-        #  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
-        #  AWS_SECRET_ACCESS_ID: ${{ secrets.AWS_SECRET_KEY }} 
-        #  AWS_REGION: 'eu-central-1' 
-      
-      - run: cat log
+        run: terraform plan
