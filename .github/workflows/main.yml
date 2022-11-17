@@ -19,7 +19,7 @@ jobs:
         uses: hashicorp/setup-terraform@v2
         with: 
           terraform_version: 1.1.7
-          #cli_config_credentials_hostname: 'terraform.example.com'
+          cli_config_credentials_hostname: 'terraform.example.com'
           #cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
           #aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
           #aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
