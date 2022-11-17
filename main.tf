@@ -1,7 +1,7 @@
 provider "aws" {}
 
 provider "aws" {
-  alias  = "west"
+  alias  = "cac1"
   region = "ca-central-1"
 }
 
