@@ -1,14 +1,10 @@
 provider "aws" {
   region     = "eu-central-1"
-  access_key = ""
-  secret_key = ""
 }
 
 provider "aws" {
   alias      = "cac1"
   region     = "ca-central-1"
-  access_key = ""
-  secret_key = ""
 }
 //vpc_dev1 -------------------------------------------
 
