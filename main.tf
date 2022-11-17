@@ -1,15 +1,6 @@
-provider "aws" {
-  region     = "eu-central-1"
-}
-
-provider "aws" {
-  alias      = "cac1"
-  region     = "ca-central-1"
-}
-//vpc_dev1 -------------------------------------------
+provider "aws" {}
 
 module "vpc_dev1" {
-  //source               = "git@github.com:elbakya/modules.git//."
   source               = "./module"
   providers            = { aws = aws.cac1 }
   env                  = "development"
@@ -18,10 +9,9 @@ module "vpc_dev1" {
   private_subnet_cidrs = []
 }
 
-//vpc_dev2-------------------------------------------
+
 
 module "vpc_dev2" {
-  //source               = "git@github.com:elbakya/finnal_modules.git//."
   source               = "./module"
   env                  = "production"
   vpc_cidr             = "10.2.0.0/16"
@@ -29,7 +19,7 @@ module "vpc_dev2" {
   private_subnet_cidrs = ["10.2.20.0/24"]
 }
 
-// Peering -------------------------------------------
+
 module "Peering_connection" {
   source           = "./peering"
   providers        = { aws = aws.cac1 }
