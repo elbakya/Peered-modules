@@ -1,10 +1,10 @@
-name: GitHub-Actions
-run-name: "Plan Process Only"
+name: GitHub-Actions-Testing
+run-name: "Testing Plan Process Only"
 on:
   workflow_dispatch:
     inputs:
       terraform_version:
-        description: "Verion of Terraform"
+        description: "Insert the Version of Terraform"
         default: 1.1.7
         required: true
 
