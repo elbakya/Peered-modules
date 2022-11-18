@@ -1,4 +1,4 @@
-name: GitHub-Actions-Plan
+name: PR-Actions-Final
 run-name: "Terraform Plan Process only"
 on:
   pull_request:
