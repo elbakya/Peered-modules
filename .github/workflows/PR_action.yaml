@@ -1,5 +1,5 @@
 name: PR-Actions-Final
-run-name: "Terraform Plan Process only"
+run-name: "Terraform Apply Process"
 on:
   pull_request:
     branches:
