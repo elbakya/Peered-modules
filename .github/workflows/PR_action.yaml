@@ -40,6 +40,10 @@ jobs:
         id: apply
         run: terraform apply -auto-approve
 
+      - name: Sleep process
+        id: sleep
+        run: sleep 2m
+
       - name: Terraform destroy
         id: destroy
         run: terraform destroy -auto-approve
