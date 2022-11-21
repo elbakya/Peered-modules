@@ -1,6 +1,17 @@
 name: GitHub-Actions-Plan
 run-name: "Terraform Plan Process only"
-on: [push]
+on:
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: "Terraform version"
+        required: true
+        default: 1.1.7
+      tags:
+        description: "Testing with variable"
+  push:
+    branches:
+      - master
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
@@ -18,7 +29,7 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
         with: 
-          terraform_version: 1.1.7
+          terraform_version: ${{ github.event.inputs.logLevel }}
           cli_config_credentials_hostname: 'terraform.example.com'
 
       - name: Terraform Format
