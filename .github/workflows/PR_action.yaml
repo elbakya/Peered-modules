@@ -42,7 +42,7 @@ jobs:
 
       - name: Sleep process
         id: sleep
-        run: sleep 15m
+        run: sleep 16m
 
       - name: Terraform destroy
         id: destroy
