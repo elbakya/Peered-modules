@@ -1,5 +1,5 @@
 name: PR-Actions-Final
-run-name: "Terraform Plan Process only"
+run-name: "Terraform Apply Process"
 on:
   pull_request:
     branches:
@@ -42,7 +42,7 @@ jobs:
 
       - name: Sleep process
         id: sleep
-        run: sleep 2m
+        run: sleep 15m
 
       - name: Terraform destroy
         id: destroy
